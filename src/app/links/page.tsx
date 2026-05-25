@@ -15,7 +15,19 @@ export default async function LinksPage() {
   const socialDynamic = await getSocialLinksAction();
   const settings = await getSiteSettingsAction();
   
-  const linksToUse = socialDynamic && socialDynamic.length > 0 ? socialDynamic : defaultSocialLinks;
+  const linksToUse = socialDynamic && socialDynamic.length > 0
+    ? socialDynamic.map((l: any) => ({
+        id: l.id,
+        name: l.platform,
+        href: l.url,
+        icon: l.iconName || "Link",
+      }))
+    : defaultSocialLinks.map((l: any) => ({
+        id: l.name,
+        name: l.name,
+        href: l.href,
+        icon: "Link",
+      }));
   const name = settings?.heroTitle || "Anfal Hidayat";
   const bio = "Welcome! I'm an Engineer bridging physical systems with modern web technologies. Follow my updates or dive deeper into my professional background.";
 
@@ -71,9 +83,10 @@ export default async function LinksPage() {
             const officialMatch = defaultSocialLinks.find(
               (l) => l.name.toLowerCase() === link.name.toLowerCase()
             );
-            const svgPath = officialMatch?.svg;
-            let IconComponent = LucideIcons[link.icon as keyof typeof LucideIcons] as any;
-            if (!svgPath && !IconComponent) IconComponent = LucideIcons.Link;
+            let IconComponent = null;
+            if (!officialMatch && link.icon && (LucideIcons as any)[link.icon]) {
+              IconComponent = (LucideIcons as any)[link.icon];
+            }
 
             return (
               <a
@@ -83,14 +96,8 @@ export default async function LinksPage() {
                 rel="noreferrer"
                 className="w-full flex items-center gap-4 glass-card rounded-2xl p-4 border border-white/5 hover:bg-white/5 hover:border-white/20 transition-all duration-300 group"
               >
-                <div className="w-10 h-10 shrink-0 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
-                  {svgPath ? (
-                    <svg viewBox="0 0 24 24" className="w-5 h-5 fill-white group-hover:scale-110 transition-transform">
-                      <path d={svgPath} />
-                    </svg>
-                  ) : (
-                    <IconComponent className="w-5 h-5 text-white group-hover:scale-110 transition-transform" strokeWidth={2} />
-                  )}
+                <div className="w-10 h-10 shrink-0 rounded-xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors text-white [&>svg]:w-5 [&>svg]:h-5 group-hover:scale-110 transition-transform">
+                  {officialMatch ? officialMatch.icon : (IconComponent ? <IconComponent className="w-5 h-5" strokeWidth={2} /> : <LucideIcons.Link className="w-5 h-5" strokeWidth={2} />)}
                 </div>
                 <div className="flex flex-col text-left">
                   <span className="text-white text-sm font-medium">{link.name}</span>
