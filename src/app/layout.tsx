@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     "Personal portfolio of Anfal Hidayat — Mechanical & Electrical Engineer specializing in Fuel Systems, Automation, and scalable web platforms.",
   keywords: ["Anfal Hidayat", "portfolio", "engineer", "developer", "IoT", "Next.js"],
   authors: [{ name: "Anfal Hidayat" }],
+  icons: {
+    icon: "/favicon.PNG",
+  },
   openGraph: {
     title: "Anfal Hidayat | Engineer & Developer",
     description:

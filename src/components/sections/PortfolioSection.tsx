@@ -8,63 +8,87 @@ import { createPortal } from "react-dom";
 const defaultProjects = [
   {
     id: 1,
-    title: "Enterprise ERP Platform",
+    title: "ManggalaOPS — ERP/CRM System",
     description:
-      "A full-scale SaaS ERP system featuring multi-module architecture: sales, finance, accounting, and reporting with real-time dashboards.",
-    tech: ["Next.js", "Tailwind", "Drizzle", "Turso"],
-    year: "2024",
-    category: "Web Platform",
+      "Sistem ERP/CRM internal untuk PT. Manggala Utama Indonesia. Fitur lengkap: Client & Lead tracking, Quotation, Invoice, Surat Jalan, Kwitansi dengan format PDF konsisten, Finance double-entry, Accounting, Internal Chat, dan Audit Log.",
+    tech: ["Next.js", "Drizzle ORM", "Turso", "TypeScript"],
+    year: "2025",
+    category: "Enterprise ERP",
     gradient: "from-zinc-900 via-zinc-800 to-zinc-900",
+    githubUrl: "https://github.com/AnfalBlank/ManggalaOPS",
   },
   {
     id: 2,
-    title: "IoT Smart Fuel Station Monitor",
+    title: "SPBU Management System",
     description:
-      "Integrated IoT sensor network with real-time dashboard for fuel level tracking, automated alerts, and consumption analytics.",
-    tech: ["React", "Node.js", "MQTT", "ESP32"],
-    year: "2023",
-    category: "IoT / Embedded",
+      "Sistem manajemen SPBU modern dengan AI-powered dashboard, POS multi-module (BBM, LPG, OLI, SnB), Auto Order System dengan prediksi stok, Smart Control untuk fraud detection, dan role-based access control.",
+    tech: ["Next.js", "TypeScript", "Zustand", "Tailwind", "Framer Motion"],
+    year: "2025",
+    category: "Business System",
     gradient: "from-zinc-900 via-neutral-800 to-zinc-900",
+    githubUrl: "https://github.com/AnfalBlank/spbu-management-system",
   },
   {
     id: 3,
-    title: "Automated Voucher Management",
+    title: "Voucher SPBU — Distribusi Digital",
     description:
-      "Role-based voucher distribution system with full audit trail, secure admin panel, and PDF/Excel report generation.",
-    tech: ["Next.js", "Prisma", "PostgreSQL"],
-    year: "2023",
+      "Sistem distribusi voucher BBM digital dengan role-based access, QR scanner, dashboard monitoring real-time, audit trail lengkap, dan laporan PDF/Excel otomatis.",
+    tech: ["Next.js", "TypeScript", "Vercel"],
+    year: "2025",
     category: "Business System",
     gradient: "from-zinc-900 via-stone-800 to-zinc-900",
+    githubUrl: "https://github.com/AnfalBlank/voucher-spbunewrev",
   },
   {
     id: 4,
+    title: "Personal Portfolio Website",
+    description:
+      "Website portfolio personal high-end dengan CMS admin panel, animasi Framer Motion, cursor spotlight, 3D hero object, smooth scroll, dan integrasi social media dinamis.",
+    tech: ["Next.js", "Framer Motion", "Tailwind", "Drizzle", "Better Auth"],
+    year: "2025",
+    category: "Web Design",
+    gradient: "from-zinc-900 via-neutral-900 to-zinc-900",
+    githubUrl: "https://github.com/AnfalBlank/anfalweb",
+  },
+  {
+    id: 5,
+    title: "HRIS — Human Resource Information System",
+    description:
+      "Sistem informasi SDM lengkap dengan manajemen karyawan, absensi, cuti, payroll, performance review, dan organizational chart. Dashboard HR analytics untuk monitoring KPI karyawan.",
+    tech: ["Next.js", "TypeScript", "Drizzle ORM", "Tailwind"],
+    year: "2025",
+    category: "HR System",
+    gradient: "from-zinc-900 via-emerald-950 to-zinc-900",
+  },
+  {
+    id: 6,
+    title: "Inventory Management System",
+    description:
+      "Sistem manajemen inventaris dengan fitur stock tracking real-time, barcode/QR scanner, auto-reorder point, laporan stok opname, dan multi-warehouse support.",
+    tech: ["Next.js", "TypeScript", "Drizzle ORM", "Tailwind"],
+    year: "2025",
+    category: "Business System",
+    gradient: "from-zinc-900 via-amber-950 to-zinc-900",
+  },
+  {
+    id: 7,
+    title: "IoT Smart Fuel Station Monitor",
+    description:
+      "Sistem monitoring tangki BBM berbasis IoT dengan sensor real-time, dashboard tracking level bahan bakar, automated alerts saat stok kritis, dan analytics konsumsi harian.",
+    tech: ["React", "Node.js", "MQTT", "ESP32"],
+    year: "2023",
+    category: "IoT / Embedded",
+    gradient: "from-zinc-900 via-zinc-800 to-stone-900",
+  },
+  {
+    id: 8,
     title: "Fuel Distribution Control System",
     description:
-      "PLC-based automation for fuel dispensing with electrical safety interlock systems and comprehensive operational logging.",
+      "Sistem otomasi dispensing BBM berbasis PLC dengan electrical safety interlock, monitoring operasional real-time, dan comprehensive logging untuk audit keselamatan.",
     tech: ["PLC", "HMI", "SCADA", "Automation"],
     year: "2022",
     category: "Industrial",
     gradient: "from-zinc-900 via-zinc-800 to-zinc-900",
-  },
-  {
-    id: 5,
-    title: "Personal Portfolio Platform",
-    description:
-      "This site — a high-end personal portfolio with CMS, admin panel, CV generator with PDF export, and social integration.",
-    tech: ["Next.js", "Framer Motion", "Tailwind"],
-    year: "2025",
-    category: "Web Design",
-    gradient: "from-zinc-900 via-neutral-900 to-zinc-900",
-  },
-  {
-    id: 6,
-    title: "Smart Farm Sensor Dashboard",
-    description:
-      "IoT-based agricultural monitoring system integrating soil moisture, temperature, and humidity sensors with cloud analytics.",
-    tech: ["React", "MQTT", "ESP32", "SQLite"],
-    year: "2022",
-    category: "IoT / AgriTech",
-    gradient: "from-zinc-900 via-zinc-800 to-stone-900",
   },
 ];
 
@@ -278,15 +302,27 @@ export const PortfolioSection = ({ portfolios }: { portfolios?: any[] }) => {
                         <ExternalLink className="w-4 h-4" />
                         Live Demo
                       </a>
-                      <a 
-                        href={`https://wa.me/6285157938871?text=${encodeURIComponent("Halo Mas Anfal! Saya tertarik dengan sistem dari project *" + selectedProject.title + "*. Apakah memungkinkan untuk berkonsultasi mengenai source code-nya?")}`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="flex-1 lg:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl glass border border-white/20 text-white hover:bg-white/10 transition-colors"
-                      >
-                        <Code className="w-4 h-4" />
-                        Source
-                      </a>
+                      {selectedProject.githubUrl ? (
+                        <a 
+                          href={selectedProject.githubUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex-1 lg:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl glass border border-white/20 text-white hover:bg-white/10 transition-colors"
+                        >
+                          <Code className="w-4 h-4" />
+                          GitHub
+                        </a>
+                      ) : (
+                        <a 
+                          href={`https://wa.me/6285157938871?text=${encodeURIComponent("Halo Mas Anfal! Saya tertarik dengan sistem dari project *" + selectedProject.title + "*. Apakah memungkinkan untuk berkonsultasi mengenai source code-nya?")}`}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="flex-1 lg:flex-none flex items-center justify-center gap-2 px-6 py-3 rounded-xl glass border border-white/20 text-white hover:bg-white/10 transition-colors"
+                        >
+                          <Code className="w-4 h-4" />
+                          Source
+                        </a>
+                      )}
                     </div>
                   </div>
                 </motion.div>

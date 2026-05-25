@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { label: "Home", href: "/" },
+  { label: "Home", href: "/home" },
   { label: "About", href: "/about" },
   { label: "Portfolio", href: "/portfolio" },
   { label: "Skills", href: "/skills" },
@@ -26,7 +26,7 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  if (pathname?.startsWith("/admin") || pathname?.startsWith("/links") || pathname?.startsWith("/launch")) return null;
+  if (pathname?.startsWith("/admin") || pathname?.startsWith("/links") || pathname?.startsWith("/launch") || pathname === "/") return null;
 
   return (
     <>
@@ -43,7 +43,7 @@ export const Navbar = () => {
         <div className="max-w-[1280px] w-full mx-auto px-6 md:px-10 flex items-center justify-between">
           {/* Logo */}
           <Link
-            href="/"
+            href="/home"
             className="text-white font-semibold text-lg tracking-tight hover:opacity-80 transition-opacity"
           >
             <span className="text-white">Anfal</span>

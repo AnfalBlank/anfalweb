@@ -29,7 +29,7 @@ export default async function AdminDashboard() {
           <button className="px-4 py-2 glass rounded-lg text-sm flex items-center gap-2 hover:bg-white/10 transition-colors border border-white/10">
             <RefreshCw size={16} /> Sync Config
           </button>
-          <Link href="/" target="_blank" className="px-4 py-2 bg-white text-black rounded-lg text-sm flex items-center gap-2 font-medium hover:bg-gray-200 transition-colors">
+          <Link href="/home" target="_blank" className="px-4 py-2 bg-white text-black rounded-lg text-sm flex items-center gap-2 font-medium hover:bg-gray-200 transition-colors">
             <ExternalLink size={16} /> View Live Site
           </Link>
         </div>

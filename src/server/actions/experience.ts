@@ -28,12 +28,12 @@ export async function addExperienceAction(formData: FormData) {
     orderIndex: await db.select().from(experience).then(res => res.length),
   });
 
-  revalidatePath("/");
+  revalidatePath("/home");
   revalidatePath("/admin/experience");
 }
 
 export async function deleteExperienceAction(id: string) {
   await db.delete(experience).where(eq(experience.id, id));
-  revalidatePath("/");
+  revalidatePath("/home");
   revalidatePath("/admin/experience");
 }

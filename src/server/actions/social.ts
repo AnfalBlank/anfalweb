@@ -39,6 +39,6 @@ export async function saveFixedSocialLinksAction(formData: FormData) {
     }
   }
 
-  revalidatePath("/");
+  revalidatePath("/home");
   revalidatePath("/admin/social");
 }

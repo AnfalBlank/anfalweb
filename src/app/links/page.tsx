@@ -51,7 +51,7 @@ export default async function LinksPage() {
         {/* Main Website Link (Highlight) */}
         <div className="w-full mb-6 relative group">
           <div className="absolute -inset-0.5 bg-gradient-to-r from-gray-500 to-white rounded-2xl opacity-30 group-hover:opacity-50 transition duration-300 blur" />
-          <Link href="/" className="relative w-full flex items-center justify-between glass-card rounded-2xl p-4 bg-zinc-900 border border-white/20 hover:bg-zinc-800 transition-all duration-300">
+          <Link href="/home" className="relative w-full flex items-center justify-between glass-card rounded-2xl p-4 bg-zinc-900 border border-white/20 hover:bg-zinc-800 transition-all duration-300">
             <div className="flex items-center gap-4">
               <div className="w-10 h-10 rounded-xl bg-white text-black flex items-center justify-center">
                 <LucideIcons.Globe size={20} className="stroke-[2.5]" />

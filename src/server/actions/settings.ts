@@ -46,6 +46,6 @@ export async function saveSiteSettingsAction(formData: FormData) {
     });
   }
 
-  revalidatePath("/");
+  revalidatePath("/home");
   revalidatePath("/admin/settings");
 }

@@ -32,11 +32,11 @@ export async function addPortfolioAction(formData: FormData) {
   });
 
   revalidatePath("/admin/portfolio");
-  revalidatePath("/#portfolio");
+  revalidatePath("/home#portfolio");
 }
 
 export async function deletePortfolioAction(id: string) {
   await db.delete(portfolio).where(eq(portfolio.id, id));
-  revalidatePath("/");
+  revalidatePath("/home");
   revalidatePath("/admin/portfolio");
 }

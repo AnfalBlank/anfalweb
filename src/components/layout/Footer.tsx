@@ -17,7 +17,7 @@ export const Footer = ({ settings, socialDynamic }: { settings?: any, socialDyna
     : contactPhoneRaw;
   const linksToUse = socialDynamic && socialDynamic.length > 0 ? socialDynamic : defaultSocialLinks;
 
-  if (pathname?.startsWith("/admin") || pathname?.startsWith("/links") || pathname?.startsWith("/launch")) return null;
+  if (pathname?.startsWith("/admin") || pathname?.startsWith("/links") || pathname?.startsWith("/launch") || pathname === "/") return null;
 
   return (
     <footer className="border-t border-white/[0.06] mt-10">
@@ -39,7 +39,7 @@ export const Footer = ({ settings, socialDynamic }: { settings?: any, socialDyna
             <p className="text-xs text-gray-600 uppercase tracking-widest font-medium mb-4">Navigation</p>
             <div className="flex flex-col gap-2.5">
               {[
-                { label: "Home", href: "/" },
+                { label: "Home", href: "/home" },
                 { label: "About", href: "/about" },
                 { label: "Portfolio", href: "/portfolio" },
                 { label: "Skills", href: "/skills" },
