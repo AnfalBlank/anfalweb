@@ -16,7 +16,7 @@ export default async function LinksPage() {
   const settings = await getSiteSettingsAction();
   
   const linksToUse = socialDynamic && socialDynamic.length > 0 ? socialDynamic : defaultSocialLinks;
-  const name = settings?.heroName || "Anfal Hidayat";
+  const name = settings?.heroTitle || "Anfal Hidayat";
   const bio = "Welcome! I'm an Engineer bridging physical systems with modern web technologies. Follow my updates or dive deeper into my professional background.";
 
   return (
