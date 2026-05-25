@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Environment, Float, MeshDistortMaterial, Sphere } from "@react-three/drei";
 
@@ -34,6 +34,16 @@ const Blob = () => {
 };
 
 export const Hero3DObject = () => {
+  const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    // Only render 3D on desktop with enough GPU power
+    const isMobile = window.innerWidth < 1024 || "ontouchstart" in window;
+    if (!isMobile) setShow(true);
+  }, []);
+
+  if (!show) return null;
+
   return (
     <div className="w-full h-full absolute inset-0 -z-10 mix-blend-lighten pointer-events-none opacity-60">
       <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>

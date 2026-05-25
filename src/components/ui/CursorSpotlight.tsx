@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export const CursorSpotlight = () => {
+  const [isMobile, setIsMobile] = useState(true);
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
@@ -11,6 +12,10 @@ export const CursorSpotlight = () => {
   const smoothY = useSpring(mouseY, { stiffness: 100, damping: 20 });
 
   useEffect(() => {
+    const mobile = window.innerWidth < 768 || "ontouchstart" in window;
+    setIsMobile(mobile);
+    if (mobile) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
@@ -18,6 +23,9 @@ export const CursorSpotlight = () => {
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, [mouseX, mouseY]);
+
+  // Don't render anything on mobile
+  if (isMobile) return null;
 
   return (
     <>
